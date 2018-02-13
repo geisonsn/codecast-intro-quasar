@@ -3,7 +3,7 @@
         <input ref="amount" class="my-input" type="number" v-model="expense.amount" placeholder="R$">
         <input class="my-input" type="text" v-model="expense.description" placeholder="Descrição">
         <input class="my-input" type="text" v-model="expense.date" placeholder="Data">
-        <button class="bg-primary my-button">Salvar</button>
+        <button class="primary my-button">Salvar</button>
     </form>
 </template>
 

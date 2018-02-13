@@ -9,6 +9,8 @@
 
     <div class="container">
       <cc-form></cc-form>
+      <hr v-show="list.length > 0"/>
+      <cc-list></cc-list> 
     </div>
 
   </q-layout>
@@ -28,6 +30,7 @@ import {
   QItemMain
 } from 'quasar'
 import CcForm from './expenses/form.vue'
+import CcList from './expenses/list.vue'
 
 export default {
   name: 'index',
@@ -42,8 +45,14 @@ export default {
     QItem,
     QItemSide,
     QItemMain,
-    CcForm
-  }
+    CcForm,
+    CcList
+  },
+  computed: {
+        list () {
+            return this.$store.state.Expenses.list
+        }
+    }
 }
 </script>
 
