@@ -15,3 +15,7 @@ export function getExpenses () {
 
   return list
 }
+
+export function removeExpense (expense) {
+  storage.removeItem(expense.id)
+}
