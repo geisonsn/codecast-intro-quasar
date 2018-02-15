@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="expense" v-for="expense in list">
+        <div class="expense" v-for="expense in list" :key="expense.id">
             <p>{{ expense.date }} - R$ {{ expense.amount }}</p>
             <p>{{ expense.description }}</p>
         </div>
