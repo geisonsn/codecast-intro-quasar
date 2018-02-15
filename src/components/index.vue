@@ -31,6 +31,7 @@ import {
 } from 'quasar'
 import CcForm from './expenses/form.vue'
 import CcList from './expenses/list.vue'
+import { getExpenses } from '../persistence'
 
 export default {
   name: 'index',
@@ -52,6 +53,9 @@ export default {
     list () {
       return this.$store.state.Expenses.list
     }
+  },
+  mounted () {
+    this.$store.commit('SET_EXPENSE', getExpenses())
   }
 }
 </script>
