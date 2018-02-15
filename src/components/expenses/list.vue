@@ -3,12 +3,13 @@
         <div class="expense" v-for="expense in list" :key="expense.id">
             <p>{{ expense.date }} - R$ {{ expense.amount }}</p>
             <p>{{ expense.description }}</p>
-            <a href="#" @click.prevent="remove(expense)" class="removeLink">remover</a>
+            <a href="#" @click.prevent="askRemove(expense)" class="removeLink">remover</a>
         </div>
     </div>
 </template>
 
 <script>
+import { Dialog } from 'quasar'
 export default {
     computed: {
         list () {
@@ -17,8 +18,26 @@ export default {
     },
     methods: {
         remove (expense) {
-            this.$store.commit('REMOVE_EXPENSE', expense)
-        }
+					this.$store.commit('REMOVE_EXPENSE', expense)
+				},
+				askRemove (expense) {
+					let self = this
+					Dialog.create({
+						title: 'Remover despesa',
+						message: 'Confirma a remoção da despesa?',
+						buttons: [
+								{
+									label: 'Não'
+								}, 
+								{
+									label: 'Sim',
+									handler () {
+										self.remove(expense)
+									}
+								}
+						]
+					})
+				}
     }
 }
 </script>
