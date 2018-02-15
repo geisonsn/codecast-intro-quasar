@@ -49,10 +49,10 @@ export default {
     CcList
   },
   computed: {
-        list () {
-            return this.$store.state.Expenses.list
-        }
+    list () {
+      return this.$store.state.Expenses.list
     }
+  }
 }
 </script>
 
