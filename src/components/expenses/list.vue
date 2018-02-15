@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="expense" v-for="expense in list" :key="expense.id">
-            <p>{{ expense.date }} - R$ {{ expense.amount }}</p>
-            <p>{{ expense.description }}</p>
+        <div class="expense" v-for="expense in list" :key="expense.id" @click="toggle(expense)">
+            <p :class="{ done: expense.done }">{{ expense.date }} - R$ {{ expense.amount }}</p>
+            <p :class="{ done: expense.done }">{{ expense.description }}</p>
             <a href="#" @click.prevent="askRemove(expense)" class="removeLink">remover</a>
         </div>
     </div>
@@ -10,6 +10,7 @@
 
 <script>
 import { Dialog } from 'quasar'
+import { setDone } from '../../persistence'
 export default {
     computed: {
         list () {
@@ -37,12 +38,20 @@ export default {
 								}
 						]
 					})
+				},
+				toggle (expense) {
+					expense.done = !expense.done
+					setDone(expense)
 				}
     }
 }
 </script>
 
 <style scoped>
+.done {
+	text-decoration: line-through;
+	color: #ccc;
+}
 .expense {
     border-bottom: #999 1px solid;
     padding-top: 10px;

@@ -17,7 +17,8 @@ export default {
 				id: '',
 				amount: '',
 				description: '',
-				date: moment().format('DD/MM/YYYY')
+				date: moment().format('DD/MM/YYYY'),
+				done: false
 			}
 		}
 	},
